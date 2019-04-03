@@ -1,7 +1,8 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class main {
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
 
         Product ziemniaki=new Product("ziemniaki",2.5,15.99);
         System.out.println(ziemniaki.toString());
@@ -9,7 +10,7 @@ public class main {
         person.printStatus();
         System.out.print("Hello World");
         ArrayList<Product> products=new ArrayList<Product>();
-       //  public PurchaseList(Event event, ArrayList<Product> availableProducts, int toddlers, int kids, int adults) {
+
         PurchaseList pl=new PurchaseList(Event.Kolacja,10,15,2);
         pl.generateList();
         PurchaseList px=new PurchaseList(Event.Obiad,10,15,2);
@@ -20,6 +21,8 @@ public class main {
         py.generateList();
         PurchaseList pe=new PurchaseList(Event.Rodzinne_Przyjecie,10,15,2);
         pe.generateList();
+        pe.readProductsFromFile("C:\\Users\\Admin\\Desktop\\kanpasack.txt");
+        pe.printAllAvaiableProducts();
 
     }
 }

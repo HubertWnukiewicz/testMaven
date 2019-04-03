@@ -1,9 +1,14 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class PurchaseList {
 
     private Event event;
     private ArrayList<Product> products;
+    private ArrayList<Product> avaiableProducts;
     private int toddlers;
     private int kids;
     private int adults;
@@ -14,10 +19,19 @@ public class PurchaseList {
         this.kids = kids;
         this.adults = adults;
         products=new ArrayList<Product>();
+        avaiableProducts=new ArrayList<Product>();
     }
 
     public Event getEvent() {
         return event;
+    }
+
+    public ArrayList<Product> getAvaiableProducts() {
+        return avaiableProducts;
+    }
+
+    public void setAvaiableProducts(ArrayList<Product> avaiableProducts) {
+        this.avaiableProducts = avaiableProducts;
     }
 
     public void setEvent(Event event) {
@@ -88,34 +102,33 @@ public class PurchaseList {
             products.add(new Product("Pomidor",(0.25+toddlers*0.1+0.2*kids+0.3*adults),(0.25+toddlers*0.1+0.2*kids+0.3*adults)*2.18));
             products.add(new Product("Boczek",(0.28+toddlers*0.10+0.18*kids+0.21*adults),(0.28+toddlers*0.10+0.18*kids+0.21*adults)*6.74));
         }
-        for(Product x:products)
-        {
-            System.out.println(x.toString());
-        }
+
         return products;
     }
-
-    /*
+    public void addProductToCatalog(Product product){
+        avaiableProducts.add(product);
+    }
     public void readProductsFromFile(String path) throws IOException {
 
         File file = new File(path);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String name="";
-        //int amount;
         double weight=0;
         double value=0;
         String line;
+
         int i = 0;
         int id = 0;
+
         while ((line = br.readLine()) != null) {
             System.out.println(line);
-            if (i % 4 == 0) {
+            if (i % 3 == 0) {
                 name = line;
                 i++;
-            } else if (i % 4 == 1) {
+            } else if (i % 3 == 1) {
                 weight = Double.parseDouble(line);
                 i++;
-            } else if (i % 4 == 2) {
+            } else if (i % 3 == 2) {
                 value = Double.parseDouble(line);
                 i++;
             }
@@ -123,15 +136,26 @@ public class PurchaseList {
             if (!name.trim().equals("") && weight>0 && value>0 ) {
                 System.out.println("x");
                 Product product = new Product(name,weight,value);
-                users.add(user);
-                imie = "";
-                nazwisko = "";
-                login = "";
-                haslo = "";
-                id++;
+                addProductToCatalog(product);
+                name = "";
+                weight=0;
+                value =0;
+
             }
 
         }
 
-    }*/
+    }
+    public void printAllproducts(){
+        for(Product x:products)
+        {
+            System.out.println(x.toString());
+        }
+    }
+    public void printAllAvaiableProducts(){
+        for(Product x:avaiableProducts)
+        {
+            System.out.println(x.toString());
+        }
+    }
 }

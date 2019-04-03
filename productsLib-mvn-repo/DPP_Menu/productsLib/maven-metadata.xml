@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>DPP_Menu</groupId>
+  <artifactId>productsLib</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20190403143041</lastUpdated>
+  </versioning>
+</metadata>
